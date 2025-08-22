@@ -1,10 +1,11 @@
-banben2="0.0.1";
+banben2="0.0.2";
 
 x_r_w='com.mmbox.xbrowser';
 qdturl='https://book.qidiantu.com';
 sdgurl='https://www.sudugu.com';
 dqurl='https://www.deqixs.com';
 lbhurl='https://www.libahao.com';
+s__u='https://m.bqgp.cc';
 
 lycurl="https://gitee.com/lyc486/yuedu2/raw/main/%E4%B9%A6%E6%BA%90/%E8%B5%B7%E7%82%B9%E5%8A%A9%E6%89%8B/jj/qdzs.json";
 lycnm="qdzscode";
@@ -424,9 +425,6 @@ let get=java.get(su+"/user/search.html"+q, head).body();
 return JSON.parse(get);
 }
 
-s__u='https://m.bqgp.cc';
-s__us=["e5k6.icu","d4a5.icu","c3b4.icu","b2d3.icu","a1c2.icu"];
-
 function sjzc () {
 const { java, cache, cookie} = this;
 cookie.removeCookie("https://www.qidian.com");
@@ -471,6 +469,7 @@ a_l = "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7";
 
 function gethd(url,ck='',ua='') {
 let u_am=this.java.getWebViewUA().replaceAll("; wv| Version\/4.0",'');
+let domain=(url+'').match(/^http.{4}[^\/]+./)[0];
 	let headerss = {
 		  "User-Agent": u_am,
 		  "sec-ch-ua": s_c_ua,
@@ -481,13 +480,12 @@ let u_am=this.java.getWebViewUA().replaceAll("; wv| Version\/4.0",'');
      	"Sec-Fetch-Site": "none",
      	"Sec-Fetch-Mode": "navigate",
      	"Sec-Fetch-Dest": "document",
-     	"Referer": url
+     	"Referer": domain
     	 }
 if (/\.js$/.test(url)) {headerss['Sec-Fetch-Dest']="script";}
 else if (/\.(?:png|jpe?g|webp|gif)$/i.test(url)) {headerss['Sec-Fetch-Dest']="image";
 headerss['Sec-Fetch-Site']="same-origin";
-headerss['Sec-Fetch-Site']="no-cors";
-headerss['Referer']=(url+'').match(/^http.{4}[^\/]+./)[0];}
+headerss['Sec-Fetch-Site']="no-cors";}
 if (/www.libahao/.test(url)) {
 headerss['User-Agent']=u_ap;
 headerss['sec-ch-ua-mobile']=s_c_ua_mp;
