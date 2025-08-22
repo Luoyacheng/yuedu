@@ -59,7 +59,6 @@ jobs:
         run: |
           mkdir -p apks
           echo "${{ steps.legado.outputs.name }}" > apks/current_version.txt
-          echo "${{ steps.legado.outputs.published_at }}" > apks/last_update.txt
 
       - name: Install jq
         if: steps.check_version.outputs.should_update == 'true'

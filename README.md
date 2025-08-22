@@ -1,5 +1,5 @@
 <div align="center">
-<img width="125" height="125" src="/订阅/洛娅橙/主页/favicon.svg" alt="洛娅橙"/>
+<img width="125" height="125" src="订阅/洛娅橙/主页/favicon.svg" alt="洛娅橙"/>
 <br>洛娅橙的阅读仓库
 <br><a href="https://loyc.xyz" target="_blank">loyc.xyz</a> / <a href="https://github.com/Luoyacheng" target="_blank">luoyacheng</a>
 <br>针对<a href="https://github.com/gedoor/legado" target="_blank">阅读3.0</a>制作的源和规则
