@@ -9,7 +9,7 @@
   "enabled": true,
   "enabledCookieJar": true,
   "enabledExplore": true,
-  "exploreUrl": "@js:\nlet banben=\"2.0.1\";\nlet r=eval(java.importScript(lycurl)+'')[0];\nr&&cache.putMemory(lycnm,r);\neval(r.exploreUrl.replace('@js:',''));",
+  "exploreUrl": "@js:\nlet banben=\"2.0.2\";\nlet r=eval(java.importScript(lycurl)+'')[0];\nr&&cache.putMemory(lycnm,r);\neval(r.exploreUrl.replace('@js:',''));",
   "jsLib": "{\"qdzs\":\"https://gitee.com/lyc486/yuedu2/raw/main/书源/起点助手/jj/qdzslib.js\"}",
   "lastUpdateTime": 1757690770943,
   "loginUi": "@js:\neval((eval(java.importScript(lycurl)+'')[0].loginUi||'').replace('@js:',''))",
@@ -29,7 +29,7 @@
     "content": "@js:\nlet r=cache.getFromMemory(lycnm);\nif (!r) {\nr=eval(java.readTxtFile(java.md5Encode16(lycurl)+'.json')+'')[0];cache.putMemory(lycnm,r);}\neval(r.ruleContent.content.replace('@js:',''));",
     "nextContentUrl": "@js:\njava.getElement(cache.getFromMemory(lycnm).ruleContent.nextContentUrl)",
     "payAction": "eval(cache.getFromMemory(lycnm).ruleContent.payAction||'')",
-    "replaceRegex": "##🎭(?:\\n|$)|\\(本章完\\)(?:$|<img)\n@js:eval(cache.getFromMemory(lycnm).ruleContent.replaceRegex.replace(/.*@js\\:/,''))",
+    "replaceRegex": "##🎭(?:\\n|$)|\\(本章完\\)(?:$|<img)\n@js:eval(cache.getFromMemory(lycnm).ruleContent.replaceRegex.replace(/[\\s\\S]*@js\\:/,''))",
     "title": "@js:\ngets(cache.getFromMemory(lycnm).ruleContent.title)"
   },
   "ruleExplore": {
