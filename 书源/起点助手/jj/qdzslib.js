@@ -851,7 +851,7 @@ function gxjslib(){
 
 function gengxin(){
 const {java, source} = this;
-	let url0='https://gitee.com/lyc486/yuedu2/commits/main/书源/起点助手/qdzs.json?browser_history=0&page=1&per=3';
+	let url0='https://gitee.com/lyc486/yuedu2/commits/main/书源/起点助手/qdzs_特供版.json?browser_history=0&page=1&per=3';
 	let rr0=java.get(url0,{'User-Agent': 'Mozilla/5.0 (Linux; Android 14)','X-Requested-With': 'XMLHttpRequest'}).body();
 	let 	gxlrr = com.jayway.jsonpath.JsonPath.read(rr0, '$.list[0:3].title');
 	let [gxlr, gxlr2, gxlr3] = gxlrr;
@@ -916,11 +916,11 @@ button:active span:after {
 <tr><td colspan="2" style="text-align: left;">往期日志：${gxlr2}<br>　　　　　${gxlr3}</td></tr>
 </table>
 <div class="ann">
-<a href="legado://import/importonline?src=https://gitee.com/lyc486/yuedu2/raw/main/书源/起点助手/qdzs.json">
+<a href="legado://import/importonline?src=https://gitee.com/lyc486/yuedu2/raw/main/书源/起点助手/qdzs_特供版.json">
 <button><span>${gxts[0]}</span></button>
 </a>
 </div>
-<a href="legado://import/importonline?src=https://cdn.jsdelivr.net/gh/Luoyacheng/yuedu@main/书源/起点助手/qdzs.json" style="font-size: 10px;">备用链接</a>
+<a href="legado://import/importonline?src=https://cdn.jsdelivr.net/gh/Luoyacheng/yuedu@main/书源/起点助手/qdzs_特供版.json" style="font-size: 10px;">备用链接</a>
 </body>
 </html>`;
 java.startBrowser(`data:text/html;base64,${java.base64Encode(htm)}`,'助手更新');
