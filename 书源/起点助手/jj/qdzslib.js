@@ -1,4 +1,4 @@
-banben2="0.0.6";
+banben2="0.0.7";
 
 function QDSign(ａ︇︉︅︅︅︅︅, ａ︉︆︆, ａ︎︎︎︎︎︎) {
   let ａ︀︀ａۖۖۖۖۗۗۖۖۖۖۖۗۗ็็็็็ = this.java.base64Decode("bGVuZ3Ro") + [];
