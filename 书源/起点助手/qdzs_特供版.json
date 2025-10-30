@@ -1,19 +1,22 @@
 [{
-  "bookSourceGroup": "📓,起点助手",
+  "bookSourceComment": "搜索时，可输入@后加上条件进行筛选或者按要求排序。支持输入书籍id\n目前可选条件有：完本，连载，3更 ，7更，30更，免费，精品，30万字，30-50万字，50-100万字，100-200万字，50万字，100万字，200万字\n可选排序有：默认，更新，推荐，月票，收藏，字数\n//解释：3更，指3天内有更新；30万字，指30万字以内；免费和精品无法同时起效；推荐，指按推荐票数量排序\n//举例：“重生@免费”，“系统@30万字@免费”，“我的@月票@精品”\n输入“@萧炎”搜索指定角色名的书籍",
+  "bookSourceGroup": "📓,起点",
   "bookSourceName": "🌈起点助手",
   "bookSourceType": 0,
   "bookSourceUrl": "https://起点助手2.luoyacheng.ip-ddns.com",
   "bookUrlPattern": "http://127.0.0.1/qdzs/.*|https://.*qidian.com/book/\\d{5,}/?",
   "concurrentRate": "3/1000",
-  "customOrder": 1,
-  "enabled": true,
+  "customButton": true,
+  "customOrder": 9,
+  "enabled": false,
   "enabledCookieJar": true,
   "enabledExplore": true,
-  "exploreUrl": "@js:\nlet banben=\"2.0.2\";\nlet r=eval(java.importScript(lycurl)+'')[0];\nr&&cache.putMemory(lycnm,r);\neval(r.exploreUrl.replace('@js:',''));",
+  "eventListener": true,
+  "exploreUrl": "@js:\nlet banben=\"2.0.4\";\nlet r=eval(java.importScript(lycurl)+'')[0];\nr&&cache.putMemory(lycnm,r);\neval(r.exploreUrl.replace('@js:',''));",
   "jsLib": "{\"qdzs\":\"https://gitee.com/lyc486/yuedu2/raw/main/书源/起点助手/jj/qdzslib.js\"}",
-  "lastUpdateTime": 1757690770943,
-  "loginUi": "@js:\neval((eval(java.importScript(lycurl)+'')[0].loginUi||'').replace('@js:',''))",
-  "loginUrl": "eval((eval(java.importScript(lycurl)+'')[0].loginUrl))",
+  "lastUpdateTime": 1761851887593,
+  "loginUi": "@js:\neval(java.importScript(lycurl)+'')[0].loginUi",
+  "loginUrl": "eval((eval(java.importScript(lycurl)+'')[0].loginUrl));",
   "respondTime": 180000,
   "ruleBookInfo": {
     "author": "au",
@@ -26,10 +29,11 @@
     "wordCount": "wc"
   },
   "ruleContent": {
+    "callBackJs": "eval(cache.getFromMemory(lycnm).ruleContent.callBackJs||'')",
     "content": "@js:\nlet r=cache.getFromMemory(lycnm);\nif (!r) {\nr=eval(java.readTxtFile(java.md5Encode16(lycurl)+'.json')+'')[0];cache.putMemory(lycnm,r);}\neval(r.ruleContent.content.replace('@js:',''));",
     "nextContentUrl": "@js:\njava.getElement(cache.getFromMemory(lycnm).ruleContent.nextContentUrl)",
     "payAction": "eval(cache.getFromMemory(lycnm).ruleContent.payAction||'')",
-    "replaceRegex": "##🎭(?:\\n|$)|\\(本章完\\)(?:$|<img)\n@js:eval(cache.getFromMemory(lycnm).ruleContent.replaceRegex.replace(/[\\s\\S]*@js\\:/,''))",
+    "replaceRegex": "##🎭(?:\\n|$)|\\(本章完\\)(?:$|<img)\n@js:eval(cache.getFromMemory(lycnm).ruleContent.replaceRegex.replace(/.*@js\\:/,''))",
     "title": "@js:\ngets(cache.getFromMemory(lycnm).ruleContent.title)"
   },
   "ruleExplore": {
