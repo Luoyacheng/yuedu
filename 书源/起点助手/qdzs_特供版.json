@@ -12,9 +12,9 @@
   "enabledCookieJar": true,
   "enabledExplore": true,
   "eventListener": true,
-  "exploreUrl": "@js:\nlet banben=\"2.0.5\";\nlet r=eval(java.importScript(lycurl)+'')[0];\nr&&cache.putMemory(lycnm,r);\neval(r.exploreUrl.replace('@js:',''));",
+  "exploreUrl": "@js:\nlet banben=\"2.0.6\";\nlet r=eval(java.importScript(lycurl)+'')[0];\nr&&cache.putMemory(lycnm,r);\neval(r.exploreUrl.replace('@js:',''));",
   "jsLib": "{\"qdzs\":\"https://gitee.com/lyc486/yuedu2/raw/main/书源/起点助手/jj/qdzslib.js\"}",
-  "lastUpdateTime": 1761877538476,
+  "lastUpdateTime": 1761878662946,
   "loginUi": "@js:\neval(java.importScript(lycurl)+'')[0].loginUi",
   "loginUrl": "let r=cache.getFromMemory(lycnm);\nif (Math.random()<0.5) {\nr=eval(java.readTxtFile(java.md5Encode16(lycurl)+'.json')+''||[''])[0];\nr&&cache.putMemory(lycnm,r);\n}\nif (!r) {\njava.downloadFile(lycurl);\nr=eval(java.readTxtFile(java.md5Encode16(lycurl)+'.json')+'')[0];\nr&&cache.putMemory(lycnm,r);}\neval(r.loginUrl||'');",
   "respondTime": 180000,
@@ -29,7 +29,7 @@
     "wordCount": "wc"
   },
   "ruleContent": {
-    "callBackJs": "@js:\nlet r=cache.getFromMemory(lycnm);\nif (!r) {\nr=eval(java.readTxtFile(java.md5Encode16(lycurl)+'.json')+'')[0];cache.putMemory(lycnm,r);}\neval(r.ruleContent.callBackJs||'');",
+    "callBackJs": "let r=cache.getFromMemory(lycnm);\nif (!r) {\nr=eval(java.readTxtFile(java.md5Encode16(lycurl)+'.json')+'')[0];cache.putMemory(lycnm,r);}\neval(r.ruleContent.callBackJs||'');",
     "content": "@js:\nlet r=cache.getFromMemory(lycnm);\nif (!r) {\nr=eval(java.readTxtFile(java.md5Encode16(lycurl)+'.json')+'')[0];cache.putMemory(lycnm,r);}\neval(r.ruleContent.content.replace('@js:',''));",
     "nextContentUrl": "@js:\njava.getElement(cache.getFromMemory(lycnm).ruleContent.nextContentUrl)",
     "payAction": "eval(cache.getFromMemory(lycnm).ruleContent.payAction||'')",
