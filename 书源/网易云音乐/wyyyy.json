@@ -1,0 +1,37 @@
+[{
+  "bookSourceComment": "let banben=\"0.0.3\";",
+  "bookSourceName": "🌈网易云音乐",
+  "bookSourceType": 1,
+  "bookSourceUrl": "https://网易云音乐.luoyacheng.ip-ddns.com",
+  "concurrentRate": "5/1000",
+  "customButton": false,
+  "customOrder": 11,
+  "enabled": true,
+  "enabledCookieJar": true,
+  "enabledExplore": false,
+  "eventListener": false,
+  "header": "@js:\n(()=>{\n\treturn JSON.stringify(gethd());\n})();",
+  "jsLib": "s_c_ua = `'Microsoft Edge';v='131', 'Chromium';v='131', 'Not_A Brand';v='24'`;\ns_c_ua_m = '?1';\ns_c_ua_p =  `'Android'`;\ncache_c = 'max-age=0';\na_l = 'zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7';\n\nfunction gethd() {\n\tlet u_a=this.java.getWebViewUA();\n\tlet headers = {\n\t\t  \t\"User-Agent\": u_a,\n\t\t  \"sec-ch-ua\": s_c_ua,\n    \t \"sec-ch-ua-mobile\": s_c_ua_m,\n     \t\"sec-ch-ua-platform\": s_c_ua_p,\n     \t\"cache-control\": cache_c,\n     \t\"accept-language\": a_l\n    \t }\nreturn headers;\n};",
+  "lastUpdateTime": 1762935875850,
+  "respondTime": 180001,
+  "ruleBookInfo": {},
+  "ruleContent": {
+    "content": "@js:\nlet id = java.hexDecodeToString(result);\nlet url = `https://music.cpp-prog.com/api.php,{\t\"method\": \"post\",\n\t\"body\": \"types=url&id=${id}&source=netease\"\n}`;\nlet url2 = `https://music.cpp-prog.com/api.php,{\t\"method\": \"post\",\n\t\"body\": \"types=lyric&id=${id}&source=netease\"\n}`;\nresult = cache.getFromMemory(\"wyy\"+id);\nif (!result) {\nlet rr=java.ajax(url);\nlet rr2=java.ajax(url2);\nresult=`${java.getString('$.url',rr)}\n${java.getString('$.lyric',rr2)}`;\ncache.putMemory(\"wyy\"+id,result);\n}\nresult"
+  },
+  "ruleExplore": {},
+  "ruleSearch": {
+    "author": "$.artist@js:result.replaceAll('\\n','/')",
+    "bookList": "$.[*]",
+    "bookUrl": "$.url_id@js:\n`data:;base64,${java.base64Encode(result)},{\"type\":\"wyy\"}`",
+    "checkKeyWord": "洛天依",
+    "coverUrl": "$.pic_id@js:\nlet url=source.get('picu'+result);\nif (url=='') {\nlet r=java.ajax(`https://music.cpp-prog.com/api.php,{\t\"method\": \"post\",\n\t\"body\": \"types=pic&id=${result}&source=netease\"\n}`)\nurl=java.getString('$.url',r);\nsource.put('picu'+result, url);\n}\nurl",
+    "kind": "$.album&&source",
+    "name": "$.name"
+  },
+  "ruleToc": {
+    "chapterList": "@js:[{text:book.name}]",
+    "chapterName": "text"
+  },
+  "searchUrl": "https://music.cpp-prog.com/api.php,{\n\t\"method\": \"post\",\n\t\"body\": \"types=search&count=20&source=netease&pages={{page}}&name={{key}}\"\n\t}",
+  "weight": 0
+}]
