@@ -3,8 +3,7 @@ name: Merge JSONs in /字典
 on:
   push:
     paths:
-      - '字典/**/*.json'
-      - '!字典/合集/zdhj.json'
+      - 'never-trigger-this-path/**'
 
 jobs:
   merge_json:

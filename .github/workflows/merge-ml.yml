@@ -3,8 +3,7 @@ name: Merge JSONs in /目录
 on:
   push:
     paths:
-      - '目录/**/*.json'
-      - '!目录/合集/mlhj.json'
+      - 'never-trigger-this-path/**'
 
 jobs:
   merge_json:

@@ -3,8 +3,7 @@ name: Merge JSONs in /净化
 on:
   push:
     paths:
-      - '净化/**/*.json'
-      - '!净化/合集/jh.json'
+      - 'never-trigger-this-path/**'
 
 jobs:
   merge_json:
