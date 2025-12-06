@@ -1,7 +1,9 @@
 # 提供阅读APP加速下载
-更新时间: 2025-12-06T02:14:18Z  
-最新版本: legado_app_3.25.120610
+更新时间: 2025-12-06T14:55:15Z  
+最新版本: legado_app_3.25.120622
 ## 下载链接:
+- [legado_app_3.25.12062247_releaseA.apk](https://yd.loyc.xyz/apks/legado_app_3.25.12062247_releaseA.apk)
+- [legado_app_3.25.12062247_release.apk](https://yd.loyc.xyz/apks/legado_app_3.25.12062247_release.apk)
 - [legado_app_3.25.12061005_releaseA.apk](https://yd.loyc.xyz/apks/legado_app_3.25.12061005_releaseA.apk)
 - [legado_app_3.25.12061005_release.apk](https://yd.loyc.xyz/apks/legado_app_3.25.12061005_release.apk)
 - [legado_app_3.25.12052222_releaseA.apk](https://yd.loyc.xyz/apks/legado_app_3.25.12052222_releaseA.apk)
