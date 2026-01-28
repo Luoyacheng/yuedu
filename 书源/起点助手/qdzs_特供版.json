@@ -12,10 +12,10 @@
   "enabledCookieJar": true,
   "enabledExplore": true,
   "eventListener": true,
-  "exploreUrl": "@js:\nlet banben=\"2.0.9\";\nlet r=eval(java.importScript(lycurl)+'')[0];\nr&&cache.putMemory(lycnm,r);\neval(r.exploreUrl.replace('@js:',''));",
+  "exploreUrl": "@js:\nlet banben=\"2.1.0\";\nlet r=eval(java.importScript(lycurl)+'')[0];\nr&&cache.putMemory(lycnm,r);\neval(r.exploreUrl.replace('@js:',''));",
   "jsLib": "{\"qdzs\":\"https://gitee.com/lyc486/yuedu2/raw/main/书源/起点助手/jj/qdzslib.js\"}",
-  "lastUpdateTime": 1769628875892,
-  "loginUi": "@js:eval(r.loginUi.replace('@js:',''));",
+  "lastUpdateTime": 1769630125451,
+  "loginUi": "@js:\nlet ui = eval(r.loginUi.replace('@js:', ''));\nlet se = false;\ntry {\n    if (ui.startsWith(\"[\")) {\n        se = true;\n    }\n} catch (e) {\n    r = eval(java.readTxtFile(java.md5Encode16(lycurl) + '.json') + '' || [''])[0];\n    r && cache.putMemory(lycnm, r);\n}\nif (se) {\n    ui\n} else {\n    java.downloadFile(lycurl);\n    r = eval(java.readTxtFile(java.md5Encode16(lycurl) + '.json') + '')[0];\n    r && cache.putMemory(lycnm, r);\n    java.log(r.loginUi);\n    ''\n}",
   "loginUrl": "let r=cache.getFromMemory(lycnm);\nif (Math.random()<0.5) {\nr=eval(java.readTxtFile(java.md5Encode16(lycurl)+'.json')+''||[''])[0];\nr&&cache.putMemory(lycnm,r);\n}\nif (!r) {\njava.downloadFile(lycurl);\nr=eval(java.readTxtFile(java.md5Encode16(lycurl)+'.json')+'')[0];\nr&&cache.putMemory(lycnm,r);}\neval(r.loginUrl||'');",
   "respondTime": 180002,
   "ruleBookInfo": {
