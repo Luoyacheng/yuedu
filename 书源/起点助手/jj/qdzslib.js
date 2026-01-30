@@ -1,4 +1,4 @@
-banben2="1.0.6";
+banben2="1.0.7";
 
 function QDSign(ａ︉︉︆︆, ａ︉︉︉︉︉︉, ａ︍︍︍︍︍) {
   let ａ︀ａۖۖۖۗۖۖۖۖۗ็็็็ = "jl4SGVlycyuedu486atdsApds7695oe0dfj23wncgxzdDg56SAFH2b3571ahGdsFzh";
