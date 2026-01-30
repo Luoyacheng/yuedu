@@ -1414,7 +1414,6 @@ setTimeout(init, 10);
 java.showBrowser(qdurl, htm,"window.run=run;window.java=java;",`{
     "expandedCornersRadius":20,
     "skipCollapsed":true,
-    "state":3,
     "heightPercentage":0.9
 }`);
 }
