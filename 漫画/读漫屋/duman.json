@@ -1,22 +1,22 @@
 [{
-  "bookSourceComment": "",
   "bookSourceGroup": "🙈,🎨",
   "bookSourceName": "🌈读漫屋",
   "bookSourceType": 2,
   "bookSourceUrl": "https://读漫屋.luoyacheng.ip-ddns.com",
   "concurrentRate": "6/1200",
-  "customOrder": 27,
+  "customButton": false,
+  "customOrder": -1,
   "enabled": true,
   "enabledCookieJar": false,
   "enabledExplore": true,
-  "exploreUrl": "@js:\nlet banben=\"1.0.5\";\njava.toast('\\n构建分类中');\nlet webr=java.ajax(surl()+'/sort/1');\nwebr = org.jsoup.Jsoup.parse(webr);\nlet lb = webr.select('.type-list li a');\nlet obj={};\nfor (char of lb) {\n\tobj[char.text()]={url: `surl()+\"${char.attr('href')}\"`}\n\t}\nlet sort = [];\nph = (title, url, size, wrap, cc) => sort.push({\n    \"title\": title,\n    \"url\": '{{'+url+'}}',\n    \"style\": {\n      layout_flexGrow: size || 1,\n      layout_flexBasisPercent: cc || 0.35,\n      layout_wrapBefore: wrap ? wrap : false\n     }\n  });\n\nfor (x in obj) {\n\tph(x, obj[x].url, obj[x].fg, obj[x].wb, obj[x].fb);\n}\nJSON.stringify(sort);",
+  "eventListener": false,
+  "exploreUrl": "@js:\nlet banben=\"1.0.6\";\njava.toast('\\n构建分类中');\nlet webr=java.ajax(surl()+'/sort/1');\nwebr = org.jsoup.Jsoup.parse(webr);\nlet lb = webr.select('.type-list li a');\nlet obj={};\nfor (char of lb) {\n\tobj[char.text()]={url: `surl()+\"${char.attr('href')}\"`}\n\t}\nlet sort = [];\nph = (title, url, size, wrap, cc) => sort.push({\n    \"title\": title,\n    \"url\": '{{'+url+'}}',\n    \"style\": {\n      layout_flexGrow: size || 1,\n      layout_flexBasisPercent: cc || 0.35,\n      layout_wrapBefore: wrap ? wrap : false\n     }\n  });\n\nfor (x in obj) {\n\tph(x, obj[x].url, obj[x].fg, obj[x].wb, obj[x].fb);\n}\nJSON.stringify(sort);",
   "header": "@js:\n(()=>{\n\treturn gethd();\n})();",
   "jsLib": "sleep = Packages.java.lang.Thread.sleep;\n//http://localhost/\nu_a = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 Edg/133.0.0.0';\ns_c_ua = `'Not A(Brand';v='99', 'Android WebView';v='121', 'Chromium';v='121'`;\ns_c_ua_m = '?1';\ns_c_ua_p =  `'Android'`;\ncache_c = 'max-age=0';\na_l = 'zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7';\n\nfunction gets(x, r) {\nlet re = r==undefined ? this.java.getString(x) : this.java.getString(x,r);\nreturn String(re);}\nfunction getsl(x, r) {\nreturn r == undefined ? this.java.getStringList(x) : this.java.getStringList(x,r)}\n\nfunction surl() {\n\tlet url=String((this.source.getLoginInfoMap()||{})['地址']);\n\tif (/^http/.test(url)) {url=url.replace(/\\/*$/,'')}\n\telse url='http://www.dumanwu1.com';\n\treturn url;}\n\nfunction gethd(url='',ck='') {\n//\tlet u_a=this.java.getWebViewUA();\n\tlet headers = {\n\t\t  \t'User-Agent': u_a,\n\t\t  'sec-ch-ua': s_c_ua,\n    \t 'sec-ch-ua-mobile': s_c_ua_m,\n     \t'sec-ch-ua-platform': s_c_ua_p,\n     \t'cache-control': cache_c,\n     \t'accept-language': a_l\n    \t }\nif (ck!='') headers['cookie']=ck;\n\nif (url=='') return JSON.stringify(headers);\nelse return url + ',' + JSON.stringify({'headers':headers});\n};\n\nfunction gengxin(){\nconst {java, source} = this;\n\tlet url0='https://gitee.com/lyc486/yuedu2/commits/main/漫画/读漫屋/duman.json?browser_history=0&page=1&per=3';\n\tlet rr0=java.get(url0,{'User-Agent': 'Mozilla/5.0 (Linux; Android 14)','X-Requested-With': 'XMLHttpRequest'}).body();\n\tlet \tgxlrr = com.jayway.jsonpath.JsonPath.read(rr0, '$.list[0:3].title');\n\tlet [gxlr, gxlr2, gxlr3] = gxlrr;\n\tlet banben =   String(source.exploreUrl).match(/let banben=\"([\\d\\.]+)\"/)[1];\n\tgxlr=String(gxlr).split(/^([^\\-]+)-/);\n\tgxlr[0]=='' ? '' : gxlr=['','0',gxlr[0]];\n\tlet gxts;\n\tif (gxlr[1]>banben){gxts=['更新','0,140,186'];}\n\telse {gxts= ['导入','76,175,80'];};\n\tlet htm = `data:text/html;charset=utf-8,<html>\n<head>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n<title>更新</title>\n<style>\ntable {\n\ttext-align: center;\n\tmargin: 0 auto;\n\t}\n.ann {\n\tdisplay: flex;\n\tjustify-content: center;\n\talign-items: center;\n\theight: 50vh;\n\t}\nbutton {\n\tbackground-color: rgb(${gxts[1]});\n\tcolor: white;\n\tborder: none;\n\tborder-radius: 4px;\n\theight: 6vh;\n\twidth: 30vw;\n\toverflow: hidden;\n\t}\nbutton span {\n  cursor: pointer;\n  display: inline-block;\n  position: relative;\n  transition: 0.4s;\n}\nbutton span:after {\n  content: '>';\n  position: absolute;\n  opacity: 0;\n  top: 0;\n  right: 30px;\n  transition: 0.2s;\n}\nbutton:active span {\n  padding-right: 20px;\n}\nbutton:active span:after {\n  opacity: 1;\n  right: -40px;\n}\n</style>\n</head>\n<body>\n<table border=\"1\" cellspacing=\"0\">\n<th colspan=\"2\">最新日志：${gxlr[2]}</th>\n<tr>\n<td>仓库版本：${gxlr[1]}</td>\n<td>本地版本：${banben}</td>\n</tr>\n<tr>\n<td colspan=\"2\" style=\"text-align: left;\">往期日志：${gxlr2}<br>　　　　　${gxlr3}</td>\n</tr>\n</table>\n<div class=\"ann\">\n<a href=\"legado://import/importonline?src=https://gitee.com/lyc486/yuedu2/raw/main/漫画/读漫屋/duman.json\">\n<button><span>${gxts[0]}</span></button>\n</a>\n</div>\n<a href=\"legado://import/importonline?src=https://raw.staticdn.net/Luoyacheng/yuedu/main/漫画/读漫屋/duman.json\" style=\"font-size: 10px;\">备用链接</a>\n</body>\n</html>`;\nif(typeof this.book=='undefined'||gxts[0]=='更新') java.startBrowser(htm,'更新');\n}\nfunction fankui(){\tthis.java.startBrowser('https://github.com/Luoyacheng/yuedu/issues','反馈');\n}",
-  "lastUpdateTime": 1746524187233,
-  "loginCheckJs": "",
+  "lastUpdateTime": 1770848135866,
   "loginUi": "[\n    {\n        name: \"地址\",\n        type: \"text\"\n    },\n    \t{\n        name: \"发布页\",\n        type: \"button\",\n        action: \"java.longToast('😅它没有发现页');\",\n        \"style\": {\n            \"layout_flexGrow\": 0,\n            \"layout_flexBasisPercent\": 0.3\n        }\n    },\n    \t{\n        name: \"测速\",\n        type: \"button\",\n        action: \"cesu()\",\n        \"style\": {\n            \"layout_flexGrow\": 0,\n            \"layout_flexBasisPercent\": 0.3\n        }\n    },\n    \t{\n        name: \"更新\",\n        type: \"button\",\n        action: \"gengxin()\",\n        \"style\": {\n            \"layout_flexGrow\": 0,\n            \"layout_flexBasisPercent\": 0.25\n        }\n    }\n]",
   "loginUrl": "function login() {}\n\nfunction cesu() {\n\t['　　　','·　　','··　','···'].forEach((_,i) => {java.toast('\\n\\n测试中'+_+'\\n');sleep((3-i)*100);});\nlet url = [surl()];\nlet tm=[], mit=99, miu='';\n\ttry {\n\tfor (char of url) {\n  let startTime=new Date().getTime();\n\tjava.head(char,{\t'User-Agent': u_a});\n\tlet endTime=new Date().getTime();\n\tlet speed = (endTime - startTime) / 1000;\n\tspeed = speed.toFixed(2);\n\tif (mit>speed) {mit=speed; miu=char;}\n\ttm.push(speed);\n\t}\n\tjava.longToast('\\n'+url[0]+'：'+tm[0]+'秒');\n\t} catch(err) {java.longToast(err);}\n\tlet Info=source.getLoginInfoMap()||{};\n\tInfo['地址'] = miu;\nsource.putLoginInfo(JSON.stringify(Info));\n}",
-  "respondTime": 180000,
+  "respondTime": 180010,
   "ruleBookInfo": {
     "author": "span:matchesWholeOwnText(^作\\s*者)@text##^作\\s*者[\\s：\\:]*",
     "coverUrl": ".himg img@data-src",
@@ -24,13 +24,10 @@
     "intro": "{{@@span:matchesWholeOwnText(^更新时间)@text}}\n{{@@.detinfo .content@html}}",
     "kind": "span:matchesWholeOwnText(^标\\s*签)@text##^标\\s*签[\\s：\\:]*|\\s+##,",
     "lastChapter": ".himg img+a@text",
-    "name": ".himg img@title",
-    "tocUrl": ""
+    "name": ".himg img@title"
   },
   "ruleContent": {
-    "content": ".main_img@html",
-    "nextContentUrl": "",
-    "title": ""
+    "content": "@webjs:\ndocument.querySelector('.main_img')?.innerHTML || '';"
   },
   "ruleExplore": {
     "author": "p:matchesWholeOwnText(^作\\s*者)@text##^作\\s*者[\\s：\\:]*",
@@ -42,26 +39,18 @@
     "name": "img@alt"
   },
   "ruleSearch": {
-    "author": "",
-    "bookList": ".item-data .itemnar",
-    "bookUrl": "a:has(img)@href",
-    "checkKeyWord": "",
-    "coverUrl": "img@data-src",
-    "kind": "",
-    "lastChapter": "img~span@text",
-    "name": "img@alt",
-    "wordCount": ""
+    "bookList": "@webjs:\nconst elements = document.querySelectorAll('.item-data .itemnar');\nconst result = Array.from(elements).map(s => {\n    const img = s.querySelector('img');\n    const a = s.querySelector('a:has(img)');\n    const span = s.querySelector('img + span');\n    const n = img?.getAttribute('alt') || '';\n    const i = img?.getAttribute('data-src') || '';\n    const u = a?.getAttribute('href') || '';\n     const t = span?.textContent.trim() || '';\n    return {\n        \"书名\": n,\n        \"最新\":t,\n        \"封面\": i,\n        \"分类\":\"123\",\n        \"链接\": u\n    };\n});\nJSON.stringify(result)",
+    "bookUrl": "链接",
+    "coverUrl": "封面",
+    "kind": "分类",
+    "lastChapter": "最新",
+    "name": "书名"
   },
   "ruleToc": {
-    "chapterList": "-@js:\nlet tim = Math.floor(Math.random()*601);\nsleep(200+tim);\r\nlet jsq = java.importScript('https://code.jquery.com/jquery-3.6.0.min.js');\r\nlet webjs = String(jsq)+String.raw`\r\nfunction morechapter2() {\r\n    var btn = $('.chaplist-more');\r\n    var id = $('meta[property=\"og:url\"]').attr('content').match(/https?:\\/\\/[^\\/]+\\/([^\\/]+)\\//)[1];\r\n    $.ajax({\r\n        url: \"/morechapter\",\r\n        type: \"POST\",\r\n        async: false, //同步模式\r\n        data: { id: id },\r\n        success: function (data) {\r\n            var ret = JSON.parse(data);\r\n            if (ret.code == \"-1\") {\r\n                layerMsg(ret.msg);\r\n            } else if (ret.code == \"200\") {\r\n                res = ret.data;\r\n                for (var a = 0; a < res.length; a++) {\r\n                    var vid = res[a].chapterid;\r\n                    var vidname = res[a].chaptername;\r\n                    var b_sn = '<a href=\"/' + id + '/' + vid + '.html\"><li>' + vidname + '</li></a>';\r\n                    $(\".chapterlistload ul\").append(b_sn);\r\n                    btn.hide();\r\n                }\r\n                return\r\n            }\r\n            btn.prop('disabled', false);\r\n        },\r\n        error: function (jqXHR, textStatus, errorThrown) {\r\n            layerMsg(\"出了点小问题，请稍后再试\");\r\n            btn.prop('disabled', false);\r\n            btn.html(\"出了点小问题，请稍后再试\");\r\n        }\r\n    });\r\n}\r\nmorechapter2();\r\n$('html').html();\r\n`;\nlet webjs2 = String(jsq)+String.raw`\ndocument.querySelector(\".chaplist-more button\").click();\nlet dataa=Date.now();\nwhile (Date.now()<(dataa+4000)) {}\n$('html').html();\n`;\n//↑只能实现post请求发送，获取的dom没改变\r\nresult = java.webView(result, baseUrl, webjs);\njava.setContent(result);\njava.getElement(\"ul a\");",
-    "chapterName": "li@text",
-    "chapterUrl": "a@href##$##,{'webView': true}",
-    "formatJs": "",
-    "isVolume": "",
-    "nextTocUrl": "",
-    "preUpdateJs": "",
-    "updateTime": ""
+    "chapterList": "-@webjs:\nif (typeof window.asyncR=='undefined') {\nwindow.asyncR=\"已执行\";\ndocument.querySelector(\".chaplist-more button\").click();}\nif (document.querySelector('.chaplist-more').style.display==\"none\") {\nwindow.asyncR=null;\nconst elements = document.querySelectorAll('ul a');\nconst result = Array.from(elements).map(s => {\n    const li = s.querySelector('li');\n    const n = li?.textContent.trim() || '';\n    const u = s?.getAttribute('href') || '';\n    return {\n        \"名称\": n,\n        \"链接\": u\n    };\n});\nJSON.stringify(result)\n} else null",
+    "chapterName": "名称",
+    "chapterUrl": "链接"
   },
-  "searchUrl": "{{surl()+'/s'}},{method:'POST',body:'k={{key}}'}",
+  "searchUrl": "{{surl()+'/s'}},{\"method\":\"POST\",\"body\":\"k={{key}}\"}",
   "weight": 0
 }]
