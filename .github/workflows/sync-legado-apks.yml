@@ -8,6 +8,7 @@ on:
 
 jobs:
   sync-prerelease-apks:
+    if: false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
