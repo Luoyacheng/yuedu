@@ -1,0 +1,122 @@
+name: Sync Legado Pre-release APKs
+
+on:
+  schedule:
+    - cron: '0 0,12 * * 1-5' # 每12小时检查一次
+    - cron: '0 0,6,12,18 * * 6,0' # 每6小时检查一次
+  workflow_dispatch:
+
+jobs:
+  sync-prerelease-apks:
+    if: false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Get latest pre-release from legado
+        id: legado
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const releases = await github.rest.repos.listReleases({
+              owner: 'gedoor',
+              repo: 'legado'
+            });
+            const preRelease = releases.data.find(release => release.prerelease);
+            if (!preRelease) {
+              core.setFailed('No pre-release found');
+              return;
+            }
+            core.setOutput('version', preRelease.tag_name);
+            core.setOutput('assets', JSON.stringify(preRelease.assets));
+            core.setOutput('published_at', preRelease.published_at);
+            core.setOutput('name', preRelease.name);
+
+      - name: Read last synced version
+        id: last_version
+        run: |
+          if [ -f apks/current_version.txt ]; then
+            LAST_VERSION=$(cat apks/current_version.txt)
+          else
+            LAST_VERSION=""
+          fi
+          echo "Last version: $LAST_VERSION"
+          echo "last_version=$LAST_VERSION" >> $GITHUB_OUTPUT
+
+      - name: Check if need update
+        id: check_version
+        run: |
+          if [ "${{ steps.legado.outputs.name }}" != "${{ steps.last_version.outputs.last_version }}" ]; then
+            echo "should_update=true" >> $GITHUB_OUTPUT
+            echo "New version detected: ${{ steps.legado.outputs.name }}"
+          else
+            echo "should_update=false" >> $GITHUB_OUTPUT
+            echo "No new version."
+          fi
+
+      - name: Prepare download directory
+        if: steps.check_version.outputs.should_update == 'true'
+        run: |
+          mkdir -p apks
+          echo "${{ steps.legado.outputs.name }}" > apks/current_version.txt
+
+      - name: Install jq
+        if: steps.check_version.outputs.should_update == 'true'
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Download APKs
+        if: steps.check_version.outputs.should_update == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -e
+          assets=$(echo '${{ steps.legado.outputs.assets }}' | jq -c '.[] | select(.name | endswith(".apk")) | {url: .url, name: .name}')
+          if [ -z "$assets" ]; then
+            echo "No APK assets found!"
+            exit 1
+          fi
+
+          echo "$assets" | while read -r asset; do
+            url=$(echo "$asset" | jq -r .url)
+            name=$(echo "$asset" | jq -r .name)
+            echo "Downloading $name ..."
+            http_code=$(curl -sSL -H "Accept: application/octet-stream" -H "Authorization: token $GH_TOKEN" -w "%{http_code}" -o "apks/$name" "$url")
+            if [ "$http_code" -ne 200 ]; then
+              echo "Failed to download $name (HTTP $http_code)"
+              exit 1
+            fi
+            if [ ! -s "apks/$name" ]; then
+              echo "Downloaded file is empty: $name"
+              exit 1
+            fi
+            echo "Successfully downloaded $name (size: $(stat -c%s "apks/$name") bytes)"
+          done
+
+      - name: List APKs for verification
+        if: steps.check_version.outputs.should_update == 'true'
+        run: |
+          echo "List of downloaded APKs:"
+          ls -lh apks/*.apk || echo "No APK files found!"
+
+      - name: Create version info
+        if: steps.check_version.outputs.should_update == 'true'
+        run: |
+          echo "# 提供阅读APP加速下载" > apks/README.md
+          echo "更新时间: ${{ steps.legado.outputs.published_at }}  " >> apks/README.md
+          echo "最新版本: ${{ steps.legado.outputs.name }}" >> apks/README.md
+          echo "## 下载链接:" >> apks/README.md
+          for apk in $(ls -r apks/*.apk); do
+            filename=$(basename "$apk")
+            echo "- [$filename](https://yd.loyc.xyz/apks/$filename)" >> apks/README.md
+          done
+
+      - name: Commit and push if there are changes
+        if: steps.check_version.outputs.should_update == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add apks/
+          git diff --cached --quiet && echo "No changes to commit." && exit 0
+          git commit -m "Update Legado Pre-release APKs to ${{ steps.legado.outputs.version }}"
+          git push

@@ -1,0 +1,43 @@
+name: Merge JSONs in /目录
+
+on:
+  push:
+    paths:
+      - 'never-trigger-this-path/**'
+
+jobs:
+  merge_json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up jq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+
+      - name: Merge JSON files to one big array
+        run: |
+          mkdir -p 目录/合集
+          files=$(find 目录 -type f -name '*.json' ! -path '目录/合集/mlhj.json')
+          if [ -z "$files" ]; then
+            echo "[]" > 目录/合集/mlhj.json
+          else
+            jq -s 'add' $files > 目录/合集/mlhj.json
+          fi
+
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if ! git diff --quiet 目录/合集/mlhj.json; then
+            git add 目录/合集/mlhj.json
+            git commit -m '机器人自动合并目录规则'
+            git push
+          fi

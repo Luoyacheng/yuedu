@@ -1,0 +1,48 @@
+name: 规则反馈
+description: 净化、目录、字典等规则反馈，不一定能解决
+labels: ["rule"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 填写标题
+  - type: dropdown
+    attributes:
+      label: 规则类型
+      description: 请选择你要提交的规则类别
+      options:
+        - 净化规则
+        - 目录规则
+        - 字典规则
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 问题描述
+      placeholder: 请正确的选择上方的规则类型
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 附件-图片或视频
+      description: 注意最大上传文件为10m
+      placeholder: 隐私问题自行注意
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: 规则代码
+      description: |
+        可选
+      placeholder: 某条规则的代码
+  - type: textarea
+    attributes:
+      label: 文章原文
+      description: 可选
+      placeholder: 反馈净化规则时，请先关净化再复制
+  - type: input
+    attributes:
+      label: 阅读版本 / Legado version
+      placeholder: "3.25.110823"
+    validations:
+      required: true

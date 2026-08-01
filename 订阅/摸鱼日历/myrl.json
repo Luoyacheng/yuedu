@@ -1,0 +1,22 @@
+[{
+  "articleStyle": 0,
+  "cacheFirst": false,
+  "customOrder": -10100154,
+  "enableJs": true,
+  "enabled": true,
+  "enabledCookieJar": false,
+  "header": "@js:\nlet days=Math.floor(Date.now()/(1000*60*60*24))+[];\nlet mydm=`\ntry {\nlet surls = source.getLoginInfoMap();\nlet url=(((surls['日历链接']||'')+'')||\"https://api.zxki.cn/api/myrl\")+'';\nlet url2=(((surls['天气链接']||'')+'')||\"https://api.zxki.cn/api/ipqm\")+'';\nresult=html(url,url2,java.timeFormatUTC(Date.now(),'yy/MM/dd HH:mm',8*36e5));\n} catch (err) {java.longToast(''+err);}`;\ncache.putMemory('myrldm',mydm);\nif (cache.get('myrlop')!=days&&!cache.getFromMemory('myrlmr')) {\n\tcache.putMemory('myrlmr',true);\n\tcache.put('myrlop', days);\n\teval(cache.getFromMemory('myrldm')+'');\n\ttry {\n\tjava.startBrowserAwait(result,'摸鱼日历',false);}catch (e) {}\n\t}\nJSON.stringify({'User-Agent':java.getWebViewUA().replaceAll(\"; wv| Version\\/4.0\",'')});",
+  "jsLib": "function html(xx,yy,zz) {\nlet lycht=String.raw`\n<html>\n<head>\n<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\">\n<meta name=\"referrer\" content=\"no-referrer\">\n    <title>${zz}</title>\n    <style>\n        body {\n            display: flex;\n            flex-direction: column;\n            align-items: center;\n            height: 100%;\n            min-height: 80vh;\n            margin: 0;\n        }\n        #tu1 {\n        \twidth: 100vw;\n        \tmargin: 0;}\n        \t#tu1>img {\n        \twidth: 100%;\n        \theight: auto;}\n        #tu2 {\n        \twidth: 100vw;\n        \toverflow: hidden;\n        \tmargin: 0;}\n        #tu2>img {\n        \twidth: 100%;\n        \theight: 100%;\n        \tobject-fit: cover;\n        \tobject-position: center 100%;}\n    </style>\n</head>\n<body>\n<div id=\"tu1\">\n<img src=\"${xx}\" alt=\"日历未加载\">\n</div>\n<div id=\"tu2\">\n<img ${/^[0n]/.test(yy)?'hidden':''} src=\"${yy}\" alt=\"天气未加载\">\n</div>\n<script>\ndocument.addEventListener('DOMContentLoaded', () => {\n  document.querySelectorAll('img').forEach(img => {\n  \tlet url=img.src;\n  \tif (/^http/i.test(url)) {\n    img.addEventListener('error', function() {\n      retryImageLoad(this,5);\n    });\n    img.dataset.originalSrc = url;\n    }\n  });\n});\nfunction retryImageLoad(img, maxRetries = 3) {\n    let retryCount = parseInt(img.dataset.retryCount) || 0;\n    if (retryCount >= maxRetries) {\n    \twindow.close();\n    \treturn;\n    }\n    img.dataset.retryCount = ++retryCount;\n    const newSrc = img.dataset.originalSrc + \n                  '?retry=' + Date.now();\n    // 延迟重试\n    setTimeout(() => {\n      img.src = newSrc;\n      img.alt = img.alt+'，重试'+retryCount+'次';\n    }, 3**retryCount*30);\n  }\n</script>\n</body>\n</html>`;\nreturn `data:text/html;base64,${this.java.base64Encode(lycht)}`;\n}",
+  "lastUpdateTime": 1768076478129,
+  "loadWithBaseUrl": false,
+  "loginUi": "[\n {\n \t \"name\": \"日历链接\",\n \t \"type\": \"text\"\n \t},\n {\n  \"name\": \"天气链接\",\n  \"type\": \"text\"\n },\n {\n \t\"name\": \"💬说明\",\n \t\"type\": \"button\",\n \t\"action\": \"java.longToast(`\n可自定义填写图片链接\n天气链接填写0或null关闭天气图加载`);\",\n \t\"style\": {\n \t\t\"layout_flexGrow\": 0,\n \t\t\"layout_flexBasisPercent\": -1,\n \t\t\"layout_wrapBefore\": true}\n \t}\n]",
+  "loginUrl": "function login(){}",
+  "preload": false,
+  "showWebLog": false,
+  "singleUrl": true,
+  "sourceComment": "let banben=\"0.0.5\";\n//韩小韩接口api.vvhan.com\n//酷酷api api.zxki.cn",
+  "sourceIcon": "http://127.0.0.1",
+  "sourceName": "摸鱼日历",
+  "sourceUrl": "http@js:eval(cache.getFromMemory('myrldm')+'')",
+  "type": 0
+}]

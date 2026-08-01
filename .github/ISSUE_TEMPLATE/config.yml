@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 讨论或源反馈
+    url: https://github.com/Luoyacheng/yuedu/discussions
+    about: 问题反馈请带上软件版本号、源版本号
+  - name: 寻求帮助
+    url: https://github.com/Luoyacheng/yuedu/discussions/new?category=%E9%97%AE%E7%AD%94
+    about: 虽然不一定有解答就是了
+  - name: 阅读相关个人网站
+    url: https://lyc.ydz6.com
+    about: 里面会有一些源使用教程

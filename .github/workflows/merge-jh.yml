@@ -1,0 +1,43 @@
+name: Merge JSONs in /净化
+
+on:
+  push:
+    paths:
+      - 'never-trigger-this-path/**'
+
+jobs:
+  merge_json:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Set up jq
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq
+
+      - name: Merge JSON files to one big array
+        run: |
+          mkdir -p 净化/合集
+          files=$(find 净化 -type f -name '*.json' ! -path '净化/合集/jh.json')
+          if [ -z "$files" ]; then
+            echo "[]" > 净化/合集/jh.json
+          else
+            jq -s 'add' $files > 净化/合集/jh.json
+          fi
+
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if ! git diff --quiet 净化/合集/jh.json; then
+            git add 净化/合集/jh.json
+            git commit -m '机器人自动合并净化规则'
+            git push
+          fi

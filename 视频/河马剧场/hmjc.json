@@ -1,0 +1,47 @@
+[{
+  "bookSourceName": "河马剧场",
+  "bookSourceType": 4,
+  "bookSourceUrl": "https://freevideo.zqqds.cn",
+  "customButton": false,
+  "customOrder": 3,
+  "enabled": true,
+  "enabledCookieJar": false,
+  "enabledExplore": false,
+  "eventListener": false,
+  "header": "<js>\n\nlet data = {\n\t\"version\": \"1.16.6\",\n\t\"pname\": \"com.dz.hmjc\",\n\t\"channelCode\": \"HMJC1000001\",\n\t\"utdidTmp\":\"A20250106221801632w7kfZO\",\n\t\"token\": \"\",\n\t\"utdid\": \"\",\n\t\"os\": \"android\",\n\t\"osv\": 30,\n\t\"brand\": \"google\",\n\t\"model\": \"Pixel 4\",\n\t\"manu\": \"Google\",\n\t\"userId\": \"0\",\n\t\"launch\": \"shortcut\",\n\t\"mchid\": \"HMJC1000001\",\n\t\"nchid\": \"HMJC1000001\",\n\t\"session1\": \"\",\n\t\"session2\": \"\",\n\t\"startScene\": \"shortcut\",\n\t\"recSwitch\": true,\n\t\"installTime\": 1736173029880,\n\t\"p\": 26\n};\n\n\nlet datas = AESencode(JSON.stringify(data))\n\nJSON.stringify({\n  \"alg\": \"HG45LKBS\",\n  \"datas\": datas,\n  \"Content-Type\": \"application/json;charset=utf-8\",\n  \"user-agent\": \"okhttp/4.10.0\"\n});\n</js>",
+  "jsLib": "AES_KEY = \"dzkjgfyxgshylgzm\";\nAES_IV = \"apiupdownedcrypt\";\n\nfunction AESdecrypt(body) {\n    const {\n        java\n    } = this;\n    var cont = java.createSymmetricCrypto(\"AES/CBC/PKCS5Padding\", AES_KEY, AES_IV).decryptStr(body);\n    return cont;\n}\n\nfunction AESencode(data) {\n    const {\n        java\n    } = this;\n    var cont = java.createSymmetricCrypto(\"AES/CBC/PKCS5Padding\", AES_KEY, AES_IV).encryptBase64(data);\n    return cont;\n}\n\nfunction GetUrl(cmd, data) {\n    const {\n        java\n    } = this;\n    var url = `/free-video-portal/portal/${cmd},{\"method\": \"post\", body: \"${this.AESencode(data)}\"}`;\n    return url;\n}",
+  "lastUpdateTime": 1762935672333,
+  "loginCheckJs": "Packages.io.legado.app.help.http.StrResponse(result.url(), AESdecrypt(JSON.parse(result.body()).data))",
+  "respondTime": 129,
+  "ruleBookInfo": {
+    "canReName": "true",
+    "coverUrl": "coverWap",
+    "init": "$.videoInfo",
+    "intro": "introduction",
+    "kind": "bookTags",
+    "lastChapter": "maxChapterName",
+    "name": "bookName@put:{bookId:$.bookId}",
+    "tocUrl": "@js:\nlet data = `{\n\t\"bookId\":\"{{java.get('bookId')}}\"\n\t}`;\nGetUrl(1132, data);"
+  },
+  "ruleContent": {
+    "content": "$.chapterInfo[0].content.mp4Url"
+  },
+  "ruleExplore": {},
+  "ruleSearch": {
+    "bookList": "$.guessLikes||$.searchVos",
+    "bookUrl": "@js:\nlet data = `{\n\t\"bookId\":\"{{$.bookId}}\",\n \"needNextChapter\":0,\n \"isNeedAlias\":\"\",\n \"bookAlias\":\"\",\n \"resolutionRate\":\"720P\"\n}`;\nGetUrl(1131, data);",
+    "coverUrl": "coverWap",
+    "intro": "introduction",
+    "kind": "bookTags",
+    "lastChapter": "maxChapterName",
+    "name": "bookName"
+  },
+  "ruleToc": {
+    "chapterList": "$.chapterList",
+    "chapterName": "chapterName",
+    "chapterUrl": "@js:\nlet data = `{\n\t\"bookId\":\"{{java.get('bookId')}}\",\n\t\"chapterIds\":[\"{{$.chapterId}}\"],\n\t\"unClockType\":\"load\",\n\t\"chapterId\":\"{{$.chapterId}}\",\n \"resolutionRate\":\"720P\"\n\t}`;\nGetUrl(1139, data);",
+    "isVip": "isCharge"
+  },
+  "searchUrl": "@js:\nlet data = `{\n\t\"keyword\":\"${key}\",\n \"page\":${page},\n \"size\":15,\n \"searchSource\":\"搜索按钮\",\n \"hotWordType\":2\n }`;\nGetUrl(1803, data);",
+  "weight": 0
+}]

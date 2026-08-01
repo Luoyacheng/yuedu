@@ -1,0 +1,33 @@
+[{
+  "bookSourceName": "稀饭影视",
+  "bookSourceType": 4,
+  "bookSourceUrl": "https://app.4kwo.com#lyc",
+  "customButton": false,
+  "customOrder": 2,
+  "enabled": true,
+  "enabledCookieJar": true,
+  "enabledExplore": false,
+  "eventListener": false,
+  "lastUpdateTime": 1762935445451,
+  "respondTime": 20,
+  "ruleBookInfo": {
+    "intro": "片名：{{$.name}}\n{{$.actor##^(.)##主演：$1}}\n{{$.writer##^(.)##编剧：$1}}\n类型：{{$.type&&$.vod_area##\\s##🔸}}\n热度：{{$.hits}}\n评分：{{$.score}}分\n{{$.remarks##^(.)##更新：$1}}\n{{$.info##^(.)##简介：$1}}"
+  },
+  "ruleContent": {},
+  "ruleExplore": {},
+  "ruleSearch": {
+    "bookList": "$.result.search_result[*]||$.[*]",
+    "bookUrl": "/api.php//provide/vod_detail?token=&id={{$.id}}&ac=vod_detail",
+    "coverUrl": "$.img",
+    "intro": "{{$.category}}\n{{$.qingxidu}}\n{{$.score}}\n{{$.msg}}",
+    "name": "$.video_name||$.name"
+  },
+  "ruleToc": {
+    "chapterList": "@js:\nlet list=[];\n//获取(接口)线路名\nlet jiekou=java.getString(\"$.player_info[*].show\").split('\\n').map(jk=> { //接口块，同线路\nreturn {\"n\":jk,\"V\":1}\n}\n);\n//this.java.log('🍊'+Date.now()+'🍊'+jiekou);\n//获取集数\nlet jishu = String(java.getString(\"$.playlist\")).split('$$$').map(xl=>{ //线路块\n\txl = xl.split('#').map(js=>{ //集数块\n\t\tjs = js.split('$');\n        return {\"n\":js[0],\"u\":js[1],\"V\":false}\n       });\n\t\treturn xl;\n\t}\n);\nfor (let i=0; i<jiekou.length;i++) {\n    list.push(jiekou[i]);\n    list=list.concat(jishu[i]);\n}\n//this.java.log('🍊'+Date.now()+'🍊'+JSON.stringify(list));\nlist",
+    "chapterName": "n",
+    "chapterUrl": "u",
+    "isVolume": "V"
+  },
+  "searchUrl": "/api.php//provide/search_result?video_name={{key}}",
+  "weight": 0
+}]

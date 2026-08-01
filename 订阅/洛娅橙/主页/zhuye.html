@@ -1,0 +1,61 @@
+<html>
+<!DOCTYPE html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>洛娅橙主页</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      /* justify-content: center; */
+      /* 水平居中 */
+      align-items: center;
+      /* 垂直居中 */
+      min-height: 80vh;
+      width: 100vw;
+    }
+
+    .toutu {
+      width: 100vw;
+    }
+
+    .lyctxt {
+      width: 100%;
+      white-space: pre-wrap;
+      /* 保留换行符 */
+    }
+  </style>
+</head>
+
+<body>
+  <img src="https://gd-hbimg.huaban.com/d2e4dd6928850ce74c0a0318692a4fc238c7dfbf34025-1Z8m0l_fw1200webp?mime=webp"
+    alt="图片加载失败，不重要啦" class="toutu">
+  <div class="lyctxt">
+#1 @洛娅橙：
+tab 欢迎使用本订阅源。
+tab pixiv书源需要特殊网络请自行解决；
+tab 18AV订阅源还在计划中。
+tab 如果书源和订阅源使用异常，请使用测试版
+[阅读测试版APP](https://miaogongzi.lanzout.com/b01rgkhhe)
+<hr>
+友链
+
+[小寒发布页](https://qyyuapi.com/)
+  </div>
+
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.querySelector('.lyctxt');
+      const text = container.innerHTML;
+      const urlRegex = /\[(.+)\]\((http.+)\)/g;
+      const html = text.replace(urlRegex, '<a href="$2" target="_blank">$1</a>').replace(/#(\d) (.+)/, '<h$1>$2</h$1>').replace(/~~(.+)~~/, '<del>$1</del>').replaceAll('tab ', '　　');
+      container.innerHTML = html;
+    });
+  </script>
+</body>
+
+</html>
